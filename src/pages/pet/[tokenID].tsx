@@ -23,7 +23,8 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 		web3.getSigner().getAddress().then(setUserAddress)
 	}, [web3])
 
-	const contract = useMemo<Wagmiabi>(() => WAGMIpet.connect(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, biconomy ? biconomy.getSignerByAddress(userAddress) : web3), [web3, biconomy])
+	const contract = useMemo<Wagmiabi>(() => WAGMIpet.connect(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, biconomy ? biconomy.getSignerByAddress(userAddress) : new ethers.providers.JsonRpcProvider(`https://polygon-mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_ID}`)), [web3, biconomy])
+
 	const { data: status } = useSWR(
 		() => web3 && `${tokenID}-status`,
 		() => contract.getStatus(tokenID),
@@ -34,6 +35,8 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 		() => contract.getStats(tokenID).then(stats => stats.map(stat => stat.toNumber())),
 		{ revalidateOnFocus: false, refreshInterval: 1000 * 60 }
 	)
+
+	console.log(status, stats)
 
 	const interactWithPet = async (getTransaction: Promise<PopulatedTransaction>) => {
 		const { data } = await getTransaction
@@ -78,7 +81,7 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 					<ProgressBar value={stats?.[3]} />
 				</div>
 				<div>
-					<p className="text-4xl">Uncleanliness</p>
+					<p className="text-4xl">Cleanliness</p>
 					<ProgressBar value={stats?.[2]} />
 				</div>
 				<div>

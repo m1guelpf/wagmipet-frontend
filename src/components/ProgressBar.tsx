@@ -1,5 +1,5 @@
 import { FC } from 'react'
 
-const ProgressBar: FC<{ value?: number }> = ({ value }) => <div className={`bg-gray-200 w-full h-4 ${value ? '' : 'animate-pulse'}`}>{value != null && <div className="bg-[lime] h-4" style={{ width: `${value}%` }} />}</div>
+const ProgressBar: FC<{ value?: number }> = ({ value }) => <div className={`bg-gray-200 w-full h-4 ${value != null ? '' : 'animate-pulse'}`}>{value != null && <div className="h-4" style={{ width: `${100 - value}%`, backgroundColor: value < 50 ? 'lime' : value < 90 ? 'yellow' : 'red' }} />}</div>
 
 export default ProgressBar

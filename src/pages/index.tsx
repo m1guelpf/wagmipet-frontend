@@ -21,8 +21,6 @@ const Home: FC = () => {
 		{ revalidateOnFocus: false }
 	)
 
-	console.log(petList)
-
 	useEffect(() => {
 		if (!web3) {
 			setUserAddress('')
