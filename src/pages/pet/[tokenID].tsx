@@ -37,8 +37,6 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 		{ revalidateOnFocus: false, refreshInterval: 1000 * 60 }
 	)
 
-	console.log(status, stats)
-
 	const interactWithPet = async (getTransaction: Promise<PopulatedTransaction>) => {
 		const { data } = await getTransaction
 
