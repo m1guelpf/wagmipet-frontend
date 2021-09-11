@@ -1,11 +1,9 @@
-import { ethers } from 'ethers'
 import { FC, FormEvent, useState } from 'react'
 import { Biconomy } from '@biconomy/mexa'
 import { Wagmipet__factory as WAGMIpet } from '@/contracts'
-import { PetsResponse } from '@/pages/api/pets'
 import { KeyedMutator } from 'swr/dist/types'
 
-const MintPet: FC<{ web3: ethers.providers.Web3Provider; biconomy: Biconomy; userAddress: string; setPetResponse: KeyedMutator<PetsResponse> }> = ({ web3, biconomy, userAddress, setPetResponse }) => {
+const MintPet: FC<{ biconomy: Biconomy; userAddress: string; setPetList: KeyedMutator<Record<number, string>> }> = ({ biconomy, userAddress, setPetList }) => {
 	const [name, setName] = useState<string>('')
 	const contract = WAGMIpet.connect(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, biconomy.getSignerByAddress(userAddress))
 
@@ -15,11 +13,11 @@ const MintPet: FC<{ web3: ethers.providers.Web3Provider; biconomy: Biconomy; use
 		const { data } = await contract.populateTransaction.adopt(name)
 		const provider = biconomy.getEthersProvider()
 
-		setPetResponse(null, false)
+		setPetList(null, false)
 
 		const tx = await provider.send('eth_sendTransaction', [{ data, from: userAddress, to: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, signatureType: 'EIP712_SIGN' }])
 
-		provider.once(tx, () => setPetResponse(null, true))
+		provider.once(tx, () => setPetList(null, true))
 
 		window.open(`https://polygonscan.com/tx/${tx}`)
 	}
