@@ -1,12 +1,12 @@
 import useSWR from 'swr'
 import { ethers } from 'ethers'
-import { openWindow } from '@/lib/utils'
 import { Biconomy } from '@biconomy/mexa'
 import ProgressBar from '@/components/ProgressBar'
 import { FC, useEffect, useMemo, useState } from 'react'
 import LoadingIndicator from '@/components/LoadingIndicator'
 import { PopulatedTransaction } from '@ethersproject/contracts'
 import ConnectWalletButton from '@/components/ConnectWalletButton'
+import TwitterWalletButton from '@/components/TwitterWalletButton'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Wagmipet__factory as WAGMIpet, Wagmipet as Wagmiabi } from '@/contracts'
 
@@ -60,10 +60,24 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 
 		provider.once(tx, () => mutateStats(null, true))
 
-		openWindow(`https://polygonscan.com/tx/${tx}`)
+		window.open(`https://polygonscan.com/tx/${tx}`)
 	}
 
-	if (!web3) return <ConnectWalletButton web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy} />
+	if (!web3)
+		return (
+			<div className="space-y-2 flex flex-col items-center justify-center">
+				<ConnectWalletButton className="text-3xl p-4 border-4 border-current text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400" web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy}>
+					Connect Wallet
+				</ConnectWalletButton>
+				<p className="dark:text-white text-xl">
+					or{' '}
+					<TwitterWalletButton web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy} className="underline">
+						log in with Twitter
+					</TwitterWalletButton>
+					.
+				</p>
+			</div>
+		)
 
 	if (!userAddress || !status || !stats) return <LoadingIndicator />
 
