@@ -77,7 +77,7 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 			</div>
 			<div className="space-y-4">
 				<div>
-					<p className="text-4xl">Boredom</p>
+					<p className="text-4xl">Happiness</p>
 					<ProgressBar value={stats?.[3]} />
 				</div>
 				<div>
