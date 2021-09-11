@@ -1,13 +1,13 @@
+import useSWR from 'swr'
 import { ethers } from 'ethers'
+import Intro from '@/components/Intro'
+import { Biconomy } from '@biconomy/mexa'
+import { fetchPets } from '@/lib/fetcher'
+import MintPet from '@/components/MintPet'
+import PetSelector from '@/components/PetSelector'
 import { FC, useEffect, useMemo, useState } from 'react'
 import LoadingIndicator from '@/components/LoadingIndicator'
-import Intro from '@/components/Intro'
-import useSWR from 'swr'
-import MintPet from '@/components/MintPet'
-import { Biconomy } from '@biconomy/mexa'
-import PetSelector from '@/components/PetSelector'
 import { Wagmipet__factory as Wagmipet, Wagmipet as Wagmiabi } from '@/contracts'
-import { fetchPets } from '@/lib/fetcher'
 
 const Home: FC = () => {
 	const [web3, setWeb3] = useState<ethers.providers.Web3Provider>(null)

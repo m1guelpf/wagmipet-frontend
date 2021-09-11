@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import { KeyedMutator } from 'swr/dist/types'
-import { PetsResponse } from '@/pages/api/pets'
 
 const PetSelector: FC<{ petList: Record<number, string>; setPetList: KeyedMutator<Record<number, string>> }> = ({ petList, setPetList }) => {
 	return (

@@ -1,8 +1,8 @@
-import WalletConnectProvider from '@walletconnect/web3-provider'
 import { ethers } from 'ethers'
-import { ButtonHTMLAttributes, Dispatch, FC, SetStateAction, useEffect, useMemo } from 'react'
 import Web3Modal from 'web3modal'
 import { Biconomy } from '@biconomy/mexa'
+import WalletConnectProvider from '@walletconnect/web3-provider'
+import { ButtonHTMLAttributes, Dispatch, FC, SetStateAction, useEffect, useMemo } from 'react'
 
 const ConnectWalletButton: FC<{ web3: ethers.providers.Web3Provider; setWeb3: Dispatch<SetStateAction<ethers.providers.Web3Provider>>; setBiconomy: Dispatch<SetStateAction<Biconomy>>; onClick?: CallableFunction } & ButtonHTMLAttributes<HTMLButtonElement>> = ({ web3, setWeb3, setBiconomy, onClick = () => null, ...props }) => {
 	const web3Modal = useMemo<Web3Modal | null>(() => {

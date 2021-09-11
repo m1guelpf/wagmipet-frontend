@@ -1,13 +1,13 @@
-import { ethers } from 'ethers'
-import { FC, useEffect, useMemo, useState } from 'react'
-import { Wagmipet__factory as WAGMIpet, Wagmipet as Wagmiabi } from '@/contracts'
-import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import useSWR from 'swr'
-import ConnectWalletButton from '@/components/ConnectWalletButton'
+import { ethers } from 'ethers'
 import { Biconomy } from '@biconomy/mexa'
-import LoadingIndicator from '@/components/LoadingIndicator'
 import ProgressBar from '@/components/ProgressBar'
+import { FC, useEffect, useMemo, useState } from 'react'
+import LoadingIndicator from '@/components/LoadingIndicator'
 import { PopulatedTransaction } from '@ethersproject/contracts'
+import ConnectWalletButton from '@/components/ConnectWalletButton'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
+import { Wagmipet__factory as WAGMIpet, Wagmipet as Wagmiabi } from '@/contracts'
 
 const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 	const [web3, setWeb3] = useState<ethers.providers.Web3Provider>(null)

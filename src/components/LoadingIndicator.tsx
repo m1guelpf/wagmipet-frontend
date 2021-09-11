@@ -1,5 +1,5 @@
-import { FC, useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import { FC, useEffect, useRef } from 'react'
 
 const LoadingIndicator: FC = () => {
 	const svgRef = useRef(null)
