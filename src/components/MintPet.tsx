@@ -32,7 +32,7 @@ const MintPet: FC<{ biconomy: Biconomy; userAddress: string; setPetList: KeyedMu
 				Just enter an amazing name for your new $PET below, and we'll send it straight to your wallet.
 				<br />
 				<br />
-				Adopting a $PET is completely free and happens on the Polygon blockchain, so transaction fees shouldn't be an issue :)
+				Adopting a $PET is completely free and we cover your gas fees, so you don't need any ETH to get started :)
 			</p>
 			<form onSubmit={adoptPet} className="flex flex-col w-full max-w-sm">
 				<input className="text-3xl py-1 px-4 text-center border-4 border-current text-black" type="text" placeholder="Your awesome new pet" onChange={event => setName((event.target as HTMLInputElement).value)} value={name} required />
