@@ -58,7 +58,7 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 
 		provider.once(tx, () => mutateStats(null, true))
 
-		window.open(`https://mumbai.polygonscan.com/tx/${tx}`)
+		window.open(`https://polygonscan.com/tx/${tx}`)
 	}
 
 	if (!web3) return <ConnectWalletButton web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy} />

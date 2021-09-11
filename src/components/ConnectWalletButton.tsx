@@ -32,7 +32,7 @@ const ConnectWalletButton: FC<{ web3: ethers.providers.Web3Provider; setWeb3: Di
 			.then(async web3 => {
 				setWeb3(web3)
 
-				const biconomy = new Biconomy(new ethers.providers.JsonRpcProvider(`https://polygon-mumbai.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_ID}`), { apiKey: process.env.NEXT_PUBLIC_BICONOMY_KEY, walletProvider: web3.provider })
+				const biconomy = new Biconomy(new ethers.providers.JsonRpcProvider(`https://polygon-mainnet.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_ID}`), { apiKey: process.env.NEXT_PUBLIC_BICONOMY_KEY, walletProvider: web3.provider })
 
 				await new Promise((resolve, reject) => biconomy.onEvent(biconomy.READY, resolve).onEvent(biconomy.ERROR, reject))
 

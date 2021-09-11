@@ -21,7 +21,7 @@ const MintPet: FC<{ web3: ethers.providers.Web3Provider; biconomy: Biconomy; use
 
 		provider.once(tx, () => setPetResponse(null, true))
 
-		window.open(`https://mumbai.polygonscan.com/tx/${tx}`)
+		window.open(`https://polygonscan.com/tx/${tx}`)
 	}
 
 	return (
