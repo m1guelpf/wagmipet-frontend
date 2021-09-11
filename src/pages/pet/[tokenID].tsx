@@ -42,7 +42,19 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 
 		mutateStats(null, false)
 
-		const tx = await provider.send('eth_sendTransaction', [{ data, from: userAddress, to: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, signatureType: 'EIP712_SIGN' }])
+		const tx = await provider.send('eth_sendTransaction', [{ data, from: userAddress, to: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS, signatureType: 'EIP712_SIGN' }]).catch(error => {
+			const message = JSON.parse(error?.body || error?.error?.body || '{}')?.error?.message?.split('execution reverted: ')?.[1]
+
+			if (message) {
+				mutateStats(null, true)
+
+				throw alert(message)
+			}
+
+			alert('Something went wrong!')
+
+			throw error
+		})
 
 		provider.once(tx, () => mutateStats(null, true))
 
