@@ -13,7 +13,7 @@ const Intro: FC<{ setWeb3: Dispatch<SetStateAction<ethers.providers.Web3Provider
 			You can feed it, play with it, clean it and make sure it gets enough sleep, getting $LOVE in return.
 			<br />
 			<br />
-			But be careful, if its needs are unmet, in can die!
+			But be careful, if its needs are unmet, it can die!
 		</p>
 		<ConnectWalletButton className="text-3xl p-4 border-4 border-current text-black hover:text-gray-500" web3={null} setWeb3={setWeb3} setBiconomy={setBiconomy}>
 			Connect Wallet
