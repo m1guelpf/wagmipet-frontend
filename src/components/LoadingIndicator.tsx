@@ -86,7 +86,7 @@ const LoadingIndicator: FC = () => {
 
 	return (
 		<div className="w-[104px]">
-			<svg version="1.1" ref={svgRef} xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 104 176" xmlSpace="preserve">
+			<svg className="text-black dark:text-white" fill="currentColor" version="1.1" ref={svgRef} xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 104 176" xmlSpace="preserve">
 				<path d="M0 12v12h8v40h8v8h8v8h8v16h-8v8h-8v8H8v40H0v24h104v-24h-8v-40h-8v-8h-8v-8h-8V80h8v-8h8v-8h8V24h8V0H0v12zm88 0v4H16V8h72v4zm0 28v16h-8v8h-8v8h-8v8h-8v16h8v8h8v8h8v8h8v32H16v-32h8v-8h8v-8h8v-8h8V80h-8v-8h-8v-8h-8v-8h-8V24h72v16zm0 124v4H16v-8h72v4z" />
 				<path d="M24 36v4h8v-8h-8v4z" ref={block1Ref} />
 				<path d="M40 36v4h8v-8h-8v4z" ref={block2Ref} />

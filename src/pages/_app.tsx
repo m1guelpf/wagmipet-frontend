@@ -29,10 +29,12 @@ const App: FC<AppProps> = ({ Component, pageProps }) => (
 			<meta property="twitter:description" content={meta.description} />
 			<meta property="twitter:image" content={meta.url + meta.image} />
 		</Head>
-		<div className="flex items-center justify-center min-h-screen">
-			<Component {...pageProps} />
-			<div className="absolute bottom-4">
-				<p className="text-xl">
+		<div className="flex flex-col items-center min-h-screen dark:bg-black">
+			<div className="flex flex-1 items-center justify-center mt-4">
+				<Component {...pageProps} />
+			</div>
+			<div className="my-4">
+				<p className="text-xl dark:text-white">
 					Created by{' '}
 					<a className="underline" href="https://twitter.com/m1guelpf" target="_blank" rel="noreferrer">
 						Miguel Piedrafita

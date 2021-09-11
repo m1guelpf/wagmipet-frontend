@@ -25,8 +25,8 @@ const MintPet: FC<{ biconomy: Biconomy; userAddress: string; setPetList: KeyedMu
 
 	return (
 		<div className="flex flex-col items-center justify-center space-y-8">
-			<h1 className="text-5xl md:text-7xl text-center ">Adopt a new $PET</h1>
-			<p className="max-w-xs md:max-w-prose text-2xl md:text-3xl text-center">
+			<h1 className="text-5xl md:text-7xl text-center dark:text-white">Adopt a new $PET</h1>
+			<p className="max-w-xs md:max-w-prose text-2xl md:text-3xl text-center dark:text-white">
 				Ready to bring home (to your wallet) a smol fren?
 				<br />
 				<br />
@@ -36,8 +36,8 @@ const MintPet: FC<{ biconomy: Biconomy; userAddress: string; setPetList: KeyedMu
 				Adopting a $PET is completely free and we cover your gas fees, so you don't need any ETH to get started :)
 			</p>
 			<form onSubmit={adoptPet} className="flex flex-col w-full max-w-sm">
-				<input className="text-3xl py-1 px-4 text-center border-4 border-current text-black" type="text" placeholder="Your awesome new pet" onChange={event => setName((event.target as HTMLInputElement).value)} value={name} required />
-				<button type="submit" className="text-3xl p-1 border-4 border-t-0 border-current text-black hover:text-gray-500">
+				<input className="text-3xl py-1 px-4 text-center border-4 border-current text-black dark:text-white dark:bg-black focus:outline-none focus-visible:ring" type="text" placeholder="Your awesome new pet" onChange={event => setName((event.target as HTMLInputElement).value)} value={name} required />
+				<button type="submit" className="text-3xl p-1 border-4 border-t-0 border-current text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400">
 					Adopt
 				</button>
 			</form>

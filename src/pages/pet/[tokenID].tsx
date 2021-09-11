@@ -71,40 +71,40 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 
 	return (
 		<div className="w-full max-w-screen-md mx-4 md:mx-0 space-y-10">
-			<h1 className="text-7xl">{name}</h1>
-			<div className="p-4 border-4 border-current text-black text-2xl space-x-2 w-full">
+			<h1 className="text-7xl dark:text-white">{name}</h1>
+			<div className="p-4 border-4 border-current text-black dark:text-white text-2xl space-x-2 w-full">
 				<span className="animate-blink">&gt;</span>
 				<span>{status}</span>
 			</div>
 			<div className="space-y-4">
 				<div>
-					<p className="text-4xl">Happiness</p>
+					<p className="text-4xl dark:text-white">Happiness</p>
 					<ProgressBar value={stats?.[3]} />
 				</div>
 				<div>
-					<p className="text-4xl">Cleanliness</p>
+					<p className="text-4xl dark:text-white">Cleanliness</p>
 					<ProgressBar value={stats?.[2]} />
 				</div>
 				<div>
-					<p className="text-4xl">Hunger</p>
+					<p className="text-4xl dark:text-white">Hunger</p>
 					<ProgressBar value={stats?.[1]} />
 				</div>
 				<div>
-					<p className="text-4xl">Sleepiness</p>
+					<p className="text-4xl dark:text-white">Sleepiness</p>
 					<ProgressBar value={stats?.[4]} />
 				</div>
 			</div>
 			<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-				<button onClick={() => interactWithPet(contract.populateTransaction.clean(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black hover:text-gray-500 disabled:text-gray-400" disabled={!biconomy}>
+				<button onClick={() => interactWithPet(contract.populateTransaction.clean(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 disabled:text-gray-400 dark:disabled:text-gray-500" disabled={!biconomy}>
 					Clean
 				</button>
-				<button onClick={() => interactWithPet(contract.populateTransaction.feed(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black hover:text-gray-500 disabled:text-gray-400" disabled={!biconomy}>
+				<button onClick={() => interactWithPet(contract.populateTransaction.feed(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 disabled:text-gray-400 dark:disabled:text-gray-500" disabled={!biconomy}>
 					Feed
 				</button>
-				<button onClick={() => interactWithPet(contract.populateTransaction.play(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black hover:text-gray-500 disabled:text-gray-400" disabled={!biconomy}>
+				<button onClick={() => interactWithPet(contract.populateTransaction.play(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 disabled:text-gray-400 dark:disabled:text-gray-500" disabled={!biconomy}>
 					Play
 				</button>
-				<button onClick={() => interactWithPet(contract.populateTransaction.sleep(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black hover:text-gray-500 disabled:text-gray-400" disabled={!biconomy}>
+				<button onClick={() => interactWithPet(contract.populateTransaction.sleep(tokenID))} className="text-3xl py-2 px-6 border-4 border-current text-black dark:text-white hover:text-gray-500 dark:hover:text-gray-400 disabled:text-gray-400 dark:disabled:text-gray-500" disabled={!biconomy}>
 					Sleep
 				</button>
 			</div>
