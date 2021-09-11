@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 import { ethers } from 'ethers'
+import { openWindow } from '@/lib/utils'
 import { Biconomy } from '@biconomy/mexa'
 import ProgressBar from '@/components/ProgressBar'
 import { FC, useEffect, useMemo, useState } from 'react'
@@ -61,7 +62,7 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 
 		provider.once(tx, () => mutateStats(null, true))
 
-		window.open(`https://polygonscan.com/tx/${tx}`)
+		openWindow(`https://polygonscan.com/tx/${tx}`)
 	}
 
 	if (!web3) return <ConnectWalletButton web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy} />

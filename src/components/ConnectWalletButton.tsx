@@ -9,7 +9,6 @@ const ConnectWalletButton: FC<{ web3: ethers.providers.Web3Provider; setWeb3: Di
 		if (typeof window == 'undefined') return null
 
 		return new Web3Modal({
-			network: process.env.NEXT_PUBLIC_NETWORK_ID,
 			cacheProvider: true,
 			providerOptions: {
 				walletconnect: {

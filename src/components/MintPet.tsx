@@ -1,3 +1,4 @@
+import { openWindow } from '@/lib/utils'
 import { Biconomy } from '@biconomy/mexa'
 import { KeyedMutator } from 'swr/dist/types'
 import { FC, FormEvent, useState } from 'react'
@@ -19,7 +20,7 @@ const MintPet: FC<{ biconomy: Biconomy; userAddress: string; setPetList: KeyedMu
 
 		provider.once(tx, () => setPetList(null, true))
 
-		window.open(`https://polygonscan.com/tx/${tx}`)
+		openWindow(`https://polygonscan.com/tx/${tx}`)
 	}
 
 	return (
