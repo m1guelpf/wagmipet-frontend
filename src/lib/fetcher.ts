@@ -6,7 +6,7 @@ export const fetchPets = async (contract: Wagmipet, userAddress: string): Promis
 
 	return Object.fromEntries(
 		await Promise.all(
-			new Array(userBalance.toNumber()).fill(undefined).map(async (_, index) => {
+			[...Array(userBalance.toNumber())].map(async (_, index) => {
 				const tokenIndex: BigNumber = await contract.tokenOfOwnerByIndex(userAddress, index)
 
 				return [tokenIndex.toNumber(), await contract.getName(tokenIndex)]
