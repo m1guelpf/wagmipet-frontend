@@ -6,7 +6,7 @@ import { AppProps } from 'next/app'
 const meta = {
 	title: 'A digital pet, on the blockchain',
 	description: 'Adopt and take care of your very own $PET on the blockchain! Feed it, play with it, clean it and make sure it gets enough sleep.',
-	url: 'https://ethpet.m1guelpf.me',
+	url: 'https://onchain.pet',
 	image: '/images/card.jpg',
 }
 
