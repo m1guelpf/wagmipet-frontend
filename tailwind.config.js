@@ -6,7 +6,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
 	purge: ['./src/**/*.{js,ts,jsx,tsx}'],
 	mode: 'jit',
-	darkMode: 'media',
+	darkMode: 'class',
 	theme: {
 		extend: {
 			colors: {
@@ -17,11 +17,16 @@ module.exports = {
 			},
 			animation: {
 				blink: '1000ms ease 0s infinite normal none running blink',
+				dance: '700ms ease 0s 2 normal none running dance',
 			},
 			keyframes: {
 				blink: {
 					'0%, 100%': { opacity: 1 },
 					'50%': { opacity: 0 },
+				},
+				dance: {
+					'0%, 100%': { transform: '' },
+					'50%': { transform: 'scaleX(-1)' },
 				},
 			},
 		},

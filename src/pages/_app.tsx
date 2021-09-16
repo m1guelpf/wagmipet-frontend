@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Head from 'next/head'
 import '@/styles/tailwind.css'
 import { AppProps } from 'next/app'
+import { ThemeProvider } from 'next-themes'
 
 const meta = {
 	title: 'A digital pet, on the blockchain',
@@ -29,19 +30,21 @@ const App: FC<AppProps> = ({ Component, pageProps }) => (
 			<meta property="twitter:description" content={meta.description} />
 			<meta property="twitter:image" content={meta.url + meta.image} />
 		</Head>
-		<div className="flex flex-col items-center min-h-screen dark:bg-black">
-			<div className="flex flex-1 items-center justify-center mt-4">
-				<Component {...pageProps} />
+		<ThemeProvider enableSystem={true} enableColorScheme={true} attribute="class">
+			<div className="flex flex-col items-center min-h-screen dark:bg-black">
+				<div className="flex flex-1 items-center justify-center mt-4">
+					<Component {...pageProps} />
+				</div>
+				<div className="my-4">
+					<p className="text-xl dark:text-white">
+						Created by{' '}
+						<a className="underline" href="https://twitter.com/m1guelpf" target="_blank" rel="noreferrer">
+							Miguel Piedrafita
+						</a>
+					</p>
+				</div>
 			</div>
-			<div className="my-4">
-				<p className="text-xl dark:text-white">
-					Created by{' '}
-					<a className="underline" href="https://twitter.com/m1guelpf" target="_blank" rel="noreferrer">
-						Miguel Piedrafita
-					</a>
-				</p>
-			</div>
-		</div>
+		</ThemeProvider>
 	</>
 )
 
