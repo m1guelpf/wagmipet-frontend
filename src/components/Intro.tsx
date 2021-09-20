@@ -3,6 +3,7 @@ import { Biconomy } from '@biconomy/mexa'
 import { Dispatch, FC, SetStateAction } from 'react'
 import ConnectWalletButton from './ConnectWalletButton'
 import TwitterWalletButton from './TwitterWalletButton'
+import AppleWalletButton from './AppleWalletButton'
 
 const Intro: FC<{ setWeb3: Dispatch<SetStateAction<ethers.providers.Web3Provider>>; setBiconomy: Dispatch<SetStateAction<Biconomy>> }> = ({ setWeb3, setBiconomy }) => (
 	<div className="flex flex-col items-center justify-center space-y-8">
@@ -22,8 +23,11 @@ const Intro: FC<{ setWeb3: Dispatch<SetStateAction<ethers.providers.Web3Provider
 			</ConnectWalletButton>
 			<p className="dark:text-white text-xl">
 				or{' '}
+				<AppleWalletButton web3={null} setWeb3={setWeb3} setBiconomy={setBiconomy} className="underline">
+					log in with Apple
+				</AppleWalletButton>{' '}
 				<TwitterWalletButton web3={null} setWeb3={setWeb3} setBiconomy={setBiconomy} className="underline">
-					log in with Twitter
+					or Twitter
 				</TwitterWalletButton>
 				.
 			</p>

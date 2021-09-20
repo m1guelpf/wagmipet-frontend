@@ -15,6 +15,7 @@ import TwitterWalletButton from '@/components/TwitterWalletButton'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Wagmipet__factory as WAGMIpet, Wagmipet as Wagmiabi } from '@/contracts'
 import { useTheme } from 'next-themes'
+import AppleWalletButton from '@/components/AppleWalletButton'
 
 const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 	const [petLight, petDark] = tokenID % 2 == 0 ? [snailLight, snailDark] : [slugLight, slugDark]
@@ -79,8 +80,11 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 				</ConnectWalletButton>
 				<p className="dark:text-white text-xl">
 					or{' '}
+					<AppleWalletButton web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy} className="underline">
+						log in with Apple
+					</AppleWalletButton>{' '}
 					<TwitterWalletButton web3={web3} setWeb3={setWeb3} setBiconomy={setBiconomy} className="underline">
-						log in with Twitter
+						or Twitter
 					</TwitterWalletButton>
 					.
 				</p>
