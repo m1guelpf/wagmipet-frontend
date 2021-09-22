@@ -1,11 +1,6 @@
 import useSWR from 'swr'
-import Image from 'next/image'
 import { ethers } from 'ethers'
 import { Biconomy } from '@biconomy/mexa'
-import slugDark from '@images/slug-dark.png'
-import slugLight from '@images/slug-light.png'
-import snailDark from '@images/snail-dark.png'
-import snailLight from '@images/snail-light.png'
 import ProgressBar from '@/components/ProgressBar'
 import { FC, useEffect, useMemo, useState } from 'react'
 import LoadingIndicator from '@/components/LoadingIndicator'
@@ -14,12 +9,10 @@ import ConnectWalletButton from '@/components/ConnectWalletButton'
 import TwitterWalletButton from '@/components/TwitterWalletButton'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { Wagmipet__factory as WAGMIpet, Wagmipet as Wagmiabi } from '@/contracts'
-import { useTheme } from 'next-themes'
 import AppleWalletButton from '@/components/AppleWalletButton'
+import PetImage from '@/components/PetImage'
 
 const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
-	const [petLight, petDark] = tokenID % 2 == 0 ? [snailLight, snailDark] : [slugLight, slugDark]
-	const { resolvedTheme } = useTheme()
 	const [web3, setWeb3] = useState<ethers.providers.Web3Provider>(null)
 	const [userAddress, setUserAddress] = useState<string>('')
 	const [biconomy, setBiconomy] = useState<Biconomy>(null)
@@ -96,7 +89,7 @@ const PetView: FC<{ tokenID: number; name: string }> = ({ tokenID, name }) => {
 	return (
 		<div className="w-full max-w-screen-md mx-4 md:mx-0 space-y-10">
 			<h1 className="text-7xl dark:text-white mb-8">{name}</h1>
-			<Image className={stats?.[0] == 1 ? 'animate-dance' : 'transform rotate-180 scale-x-[-1]'} width={petLight.width / 2} height={petLight.height / 2} src={resolvedTheme == 'dark' ? petDark : petLight} placeholder="blur" />
+			<PetImage tokenID={tokenID} isAlive={stats?.[0] == 1} />
 			<div className="p-4 border-4 border-current text-black dark:text-white text-2xl space-x-2 w-full">
 				<span className="animate-blink">&gt;</span>
 				<span>{status}</span>
